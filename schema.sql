@@ -1,6 +1,6 @@
 CREATE DATABASE portfolio;
 
-USE DATABASE portfolio;
+USE portfolio;
 
 CREATE TABLE User (
     UserID int NOT NULL AUTO_INCREMENT,
@@ -39,7 +39,8 @@ CREATE TABLE Education (
     EndDate DATE,
     IsCompleted BOOLEAN,
     Major varchar(255) NOT NULL,
-    PRIMARY KEY(UserID) REFERENCES User(UserID)
+    PRIMARY KEY(EducationID),
+    FOREIGN KEY(UserID) REFERENCES User(UserID)
 );
 
 CREATE TABLE Work (
@@ -54,8 +55,8 @@ CREATE TABLE Work (
     StartDate DATE NOT NULL,
     EndDate DATE,
     CurrentRole BOOLEAN,
-
-    PRIMARY KEY(UserID) REFERENCES User(UserID)
+    PRIMARY KEY(WorkID),
+    FOREIGN KEY(UserID) REFERENCES User(UserID)
 );
 
 CREATE TABLE Skill (
@@ -66,5 +67,6 @@ CREATE TABLE Skill (
     Category varchar(255) NOT NULL,
     Section varchar(255),
     SkillRating int NOT NULL,
-    PRIMARY KEY(SkillID) REFERENCES User(UserID)
+    PRIMARY KEY(SkillID),
+    FOREIGN KEY(UserID) REFERENCES User(UserID)
 );
